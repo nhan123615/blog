@@ -36,3 +36,14 @@ Route::group(['namespace' => 'Admin'],function () {
     Route::resource('admin/tag', 'App\Http\Controllers\Admin\TagController');
     Route::resource('admin/category', 'App\Http\Controllers\Admin\CategoryController'); */
 
+<<<<<<< HEAD
+=======
+Route::get('/', function () {
+    return view('user/blog');
+})->name('home');
+
+Route::get('/post', function () {
+    return view('user/post');
+})->name('post');
+
+>>>>>>> a9bde6d2a3aa8baf115e7b2b32932b8783a3cd3b
