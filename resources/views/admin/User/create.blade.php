@@ -34,15 +34,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    @if (count($errors) >0)
-      @foreach ($errors->all() as $error)
-  <p class="alert alert-danger">{{$error}}</p>
-
-      @endforeach
-    @endif
-
-    <form role="form" action="{{ route('post.store')}}" method="POST">
-      {{csrf_field()}}
+    <form role="form">
       <div class="card-body">
         <div class="row">
           <div class="col-lg-6">

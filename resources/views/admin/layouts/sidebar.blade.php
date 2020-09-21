@@ -14,7 +14,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="{{ route('admin/home')}}" class="d-block">Alexander Pierce</a>
         </div>
       </div>
 
@@ -27,25 +27,25 @@
             
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link ">
+                <a href="{{ route('post.index')}}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Post</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="@yield('admin/post')" class="nav-link">
+                <a href="{{ route('category.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Categories</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="{{ route('tag.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tags</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="{{ route('user.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User</p>
                 </a>
