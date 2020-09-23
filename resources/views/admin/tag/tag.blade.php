@@ -33,7 +33,9 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form role="form">
+    @include('includes.messages')
+  <form role="form" action="{{route('tag.store')}}" method="post">
+    {{csrf_field()}}
         <div class="row">
             <div class="col-lg-2"></div>
             <div class="card-body">
@@ -51,6 +53,7 @@
         
                       <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
+                      <a class="btn btn-warning" href="{{route('tag.index')}}">Back</a>
                       </div>
                 </div>        
                {{--  <div class="col-lg-1"></div> --}}

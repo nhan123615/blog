@@ -24,9 +24,9 @@
 
       <!-- Default box -->
       <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Title</h3>
-
+        <div class="card-header text-center">
+          <h3 class="card-title">Posts</h3>
+          <a class="btn btn-success text-white" href="{{route('post.create')}}">Add New Post</a>      
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fas fa-minus"></i></button>
@@ -35,7 +35,58 @@
           </div>
         </div>
         <div class="card-body">
-          Start creating your amazing application!
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Title</th>
+              <th>Subtitle</th>
+              <th>Slug</th>
+              <th>Created At</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+              @foreach($posts as $post)
+              <tr>
+                <td>{{$post->index + 1}}</td>
+                <td>{{$post->title}}</td>
+                <td>{{$post->subtitle}}</td>
+                <td>{{$post->slug}}</td>
+                <td>{{$post->created_at}}</td>
+                <td>
+                <a href="{{route('post.edit', $post->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>            
+                  </td>
+                <td>
+                <form id="delete-form-{{$post->id}}" action="{{route('post.destroy',$post->id)}}" style="display:none" method="post">
+                  {{csrf_field()}}
+                  {{method_field('DELETE')}}
+                </form>
+              <a href="" onclick="
+              if(confirm('Are you sure, you want to delete this ?')){
+                event.preventDefault();
+                document.getElementById('delete-form-{{$post->id}}').submit();
+              }else{
+                event.preventDefault();
+              }"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </td>
+              </tr>    
+              @endforeach
+               
+            </tbody>
+            <tfoot>
+            <tr>
+              <th>S.No</th>
+              <th>Title</th>
+              <th>Subtitle</th>
+              <th>Slug</th>
+              <th>Created At</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            </tfoot>
+          </table>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

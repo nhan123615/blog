@@ -24,9 +24,9 @@
 
       <!-- Default box -->
       <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Title</h3>
-
+        <div class="card-header text-center">
+          <h3 class="card-title">Categories</h3>
+          <a class="btn btn-success text-white" href="{{route('category.create')}}">Add New Category</a>      
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fas fa-minus"></i></button>
@@ -35,7 +35,38 @@
           </div>
         </div>
         <div class="card-body">
-          Start creating your amazing application!
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Tag Name</th>
+              <th>Slug</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+              @foreach($categories as $category)
+              <tr>
+                <td>{{$category->index + 1}}</td>
+                <td>{{$category->name}}</td>
+                <td>{{$category->slug}}</td>
+                <td> Edit</td>
+                <td>Delete</td>
+              </tr>    
+              @endforeach
+               
+            </tbody>
+            <tfoot>
+            <tr>
+              <th>S.No</th>
+              <th>Tag Name</th>
+              <th>Slug</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            </tfoot>
+          </table>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
