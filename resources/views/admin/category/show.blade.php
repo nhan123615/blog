@@ -51,8 +51,22 @@
                 <td>{{$category->index + 1}}</td>
                 <td>{{$category->name}}</td>
                 <td>{{$category->slug}}</td>
-                <td> Edit</td>
-                <td>Delete</td>
+                <td>
+                  <a href="{{route('category.edit', $category->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>            
+                  </td>
+                  <td>
+                  <form id="delete-form-{{$category->id}}" action="{{route('category.destroy',$category->id)}}" style="display:none" method="post">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
+                  </form>
+                <a href="" onclick="
+                if(confirm('Are you sure, you want to delete this ?')){
+                  event.preventDefault();
+                  document.getElementById('delete-form-{{$category->id}}').submit();
+                }else{
+                  event.preventDefault();
+                }"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                  </td>
               </tr>    
               @endforeach
                

@@ -26,6 +26,6 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
  
- 
+  <link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
 @section('head-section')
   @show

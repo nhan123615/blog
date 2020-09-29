@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\user\post;
+use App\Models\user\tag;
+use App\Models\user\category;
 use Illuminate\Http\Request;
 
 
@@ -28,7 +30,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin/post/post');
+        $tags = tag::all();
+        $categories = category::all();
+        return view('admin/post/post',compact('tags', 'categories'));
     }
 
     /**
@@ -48,12 +52,15 @@ class PostController extends Controller
         ]);
 
         $post = new post;
+      
         $post->title = $request->title;
         $post->subtitle = $request->subtitle;
         $post->slug = $request->slug;
         $post->body = $request->body;
+        $post->status = $request->status;
         $post->save();
-
+        $post->tags()->sync($request->tags);
+        $post->categories()->sync($request->categories);
         return redirect(route('post.index'));
     }
 
@@ -77,8 +84,10 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = post::where('id', $id)->first();
-        
-        return view('admin.post.edit',compact('post'));
+        $tags = tag::all();
+        $categories = category::all();
+        return view('admin/post/edit',compact('tags', 'categories','post'));
+      /*   return view('admin.post.edit',compact('post')); */
     }
 
     /**
@@ -90,6 +99,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+       /* return $request->status; */
         $this->validate($request,[
             'title' =>'required',
             'subtitle' =>'required',
@@ -101,6 +111,9 @@ class PostController extends Controller
         $post->subtitle = $request->subtitle;
         $post->slug = $request->slug;
         $post->body = $request->body;
+        $post->status = $request->status;
+        $post->tags()->sync($request->tags);
+        $post->categories()->sync($request->categories);
         $post->save();
 
         return redirect(route('post.index'));

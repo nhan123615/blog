@@ -50,14 +50,14 @@
             <tbody>
               @foreach($posts as $post)
               <tr>
-                <td>{{$post->index + 1}}</td>
+                <td>{{$loop->index + 1}}</td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->subtitle}}</td>
                 <td>{{$post->slug}}</td>
                 <td>{{$post->created_at}}</td>
                 <td>
                 <a href="{{route('post.edit', $post->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>            
-                  </td>
+                </td>
                 <td>
                 <form id="delete-form-{{$post->id}}" action="{{route('post.destroy',$post->id)}}" style="display:none" method="post">
                   {{csrf_field()}}

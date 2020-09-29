@@ -57,21 +57,46 @@
           </div>
   
           <div class="col-lg-6">         
-            <div class="form-group">
-              <label for="exampleInputFile">File input</label>
-              <div class="input-group">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="image">
-                  <label class="custom-file-label" for="image" name="image">Choose file</label>
+            <div class="row">
+              <div class="col-lg-5">
+                <div class="form-check mt-5">
+                <input type="checkbox" class="form-check-input" name="status">
+                <label class="form-check-label" for="status" name="status" value="1">Pulish</label>
+              </div>
+            </div>
+              <div class="col-lg-7">
+                <div class="form-group">
+                <label for="exampleInputFile">File input</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="image">
+                    <label class="custom-file-label" for="image" name="image">Choose file</label>
+                  </div>
                 </div>
               </div>
             </div>
-              <br>
-              <br>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="status">
-              <label class="form-check-label" for="status" name="status">Pulish</label>
+             
             </div>
+
+                <div class="form-group" >
+                  <label>Select Tags</label>
+                  <select class="select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;"  tabindex="-1" aria-hidden="true" name = "tags[]">
+                    @foreach($tags as $tag)
+                    <option value="{{ $tag->id}}">{{$tag->name}}</option>
+                    @endforeach
+                   
+                  </select>
+                </div>
+
+                <div class="form-group" >
+                  <label>Select Category</label>
+                  <select class="select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true" name = "categories[]">
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id}}">{{$category->name}}</option>
+                    @endforeach
+                   
+                  </select>
+                </div>
           </div>     
         </div>
         

@@ -42,6 +42,8 @@
   <script src="{{asset('admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
   <script src="{{asset('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+  <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
+ 
   <script>
   $(function () {
       $("#example1").DataTable({
@@ -58,6 +60,18 @@
         "responsive": true,
       });
     });
+
+    
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+
+
+
+  })
+
   </script>
 
 
